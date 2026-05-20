@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MOTION TEES — Wear The Culture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0a0a0a;
+  --off:     #111111;
+  --surface: #181818;
+  --border:  rgba(255,255,255,0.08);
+  --white:   #f5f0e8;
+  --cream:   #ede4d3;
+  --maroon:  #800000;
+  --maroon2: #a31515;
+  --sand:    #c4a882;
+  --muted:   #666666;
+  --font-display: 'Archivo Black', sans-serif;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--maroon); }
+
+/* ── PROMO BAR ── */
+.promo {
+  background: var(--maroon);
+  text-align: center;
+  padding: 9px;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  font-family: var(--font-mono);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.promo-inner {
+  display: inline-block;
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee { from { transform: translateX(30vw); } to { transform: translateX(-100%); } }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 900;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 72px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 20px; letter-spacing: 0.02em;
+  cursor: pointer;
+}
+.logo span { color: var(--maroon); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.cart-trigger {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--white);
+  border: 1px solid var(--border); padding: 8px 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.cart-trigger:hover { border-color: var(--maroon); background: rgba(128,0,0,0.1); }
+.cart-bubble {
+  background: var(--maroon); color: var(--white);
+  font-size: 10px; width: 18px; height: 18px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+}
+
+/* ── HERO ── */
+.hero {
+  height: 92vh; min-height: 580px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 6rem 5% 6rem;
+  position: relative; z-index: 2;
+  background: linear-gradient(135deg, rgba(10,10,10,1) 40%, rgba(10,10,10,0.6));
+}
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 0.3em; color: var(--maroon);
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--maroon); }
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.9; margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.hero-h1 em {
+  font-family: var(--font-serif);
+  font-style: italic; font-weight: 300;
+  color: var(--sand); display: block;
+  font-size: 0.65em; line-height: 1.2;
+}
+.hero-sub {
+  color: var(--muted); font-size: 12px; line-height: 1.8;
+  max-width: 380px; margin: 1.5rem 0 2.5rem;
+  font-family: var(--font-mono); font-weight: 300;
+  text-transform: none;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--white); color: var(--black);
+  padding: 14px 32px; border: none; cursor: pointer;
+  font-family: var(--font-display); font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--maroon); color: var(--white); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--white);
+  padding: 14px 32px;
+  border: 1px solid rgba(255,255,255,0.25); cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--surface);
+}
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.75;
+  transition: transform 8s ease;
+}
+.hero-right:hover .hero-img { transform: scale(1.04); }
+.hero-overlay-text {
+  position: absolute; bottom: 2rem; right: 2rem;
+  font-family: var(--font-display);
+  font-size: 7rem; color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none; user-select: none;
+  letter-spacing: -0.04em;
+}
+.hero-tag {
+  position: absolute; top: 2rem; left: 2rem;
+  background: var(--maroon); color: var(--white);
+  padding: 6px 12px; font-size: 9px; letter-spacing: 0.2em;
+  font-family: var(--font-mono);
+}
+
+/* ── TICKER STRIP ── */
+.ticker-strip {
+  background: var(--surface); border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0; overflow: hidden;
+}
+.ticker-track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: tickr 30s linear infinite;
+}
+@keyframes tickr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item {
+  font-size: 10px; letter-spacing: 0.2em; color: var(--muted);
+  padding: 0 2rem; text-transform: uppercase; flex-shrink: 0;
+}
+.ticker-item span { color: var(--maroon); margin-right: 2rem; }
+
+/* ── SECTION COMMONS ── */
+.section-wrap { padding: 7rem 5%; }
+.section-kicker {
+  font-size: 10px; letter-spacing: 0.28em; color: var(--maroon);
+  text-transform: uppercase; margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-kicker::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+h2.section-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  line-height: 0.95; letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--surface); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-body {
+  font-family: var(--font-mono); font-weight: 300;
+  font-size: 13px; line-height: 1.9; color: #999;
+  text-transform: none;
+}
+.about-body p + p { margin-top: 1rem; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2.5rem; }
+.stat-cell {
+  background: var(--surface); padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.stat-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--white); line-height: 1; }
+.stat-lbl { font-size: 9px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.about-visual { position: relative; }
+.about-img-wrap {
+  aspect-ratio: 4/5; overflow: hidden;
+  position: relative;
+}
+.about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.about-quote {
+  position: absolute; bottom: -1.5rem; left: -1.5rem;
+  background: var(--maroon); padding: 1.5rem 1.8rem;
+  max-width: 260px;
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1rem; line-height: 1.5; color: var(--white);
+  font-weight: 300; text-transform: none;
+}
+
+/* ── PRODUCTS ── */
+.products-section { background: var(--black); }
+.products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+.product-card {
+  background: var(--black); cursor: pointer;
+  transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.product-card:hover { background: var(--surface); }
+.product-card:hover .p-img { transform: scale(1.06); }
+.product-card:hover .p-add { opacity: 1; transform: translateY(0); }
+.p-img-wrap { aspect-ratio: 3/4; overflow: hidden; background: var(--surface); position: relative; }
+.p-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.p-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface);
+}
+.p-img-placeholder svg { width: 60%; height: 60%; opacity: 0.12; }
+.p-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--maroon); color: var(--white);
+  font-size: 8px; letter-spacing: 0.18em; padding: 4px 8px;
+  text-transform: uppercase;
+}
+.p-info { padding: 1.2rem; }
+.p-artist { font-size: 9px; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+.p-name { font-family: var(--font-display); font-size: 14px; letter-spacing: 0.02em; margin-bottom: 6px; }
+.p-price { font-family: var(--font-mono); font-size: 12px; color: var(--sand); }
+.p-add {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--maroon); color: var(--white);
+  padding: 12px; text-align: center;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--font-display);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+/* ── ARTIST SUPPORT ── */
+.artists-section { background: var(--off); }
+.artists-intro { max-width: 560px; margin-bottom: 4rem; }
+.artists-intro p { font-family: var(--font-mono); font-weight: 300; color: #888; line-height: 1.85; text-transform: none; font-size: 13px; }
+.artists-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-bottom: 5rem; }
+.artist-card {
+  background: var(--off); padding: 2.5rem 2rem;
+  transition: background 0.25s;
+  position: relative; overflow: hidden;
+}
+.artist-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--maroon); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.artist-card:hover { background: var(--surface); }
+.artist-card:hover::before { transform: scaleX(1); }
+.artist-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--maroon); margin-bottom: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.2rem;
+  color: var(--white);
+}
+.artist-name { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 4px; }
+.artist-location { font-size: 9px; letter-spacing: 0.18em; color: var(--maroon); text-transform: uppercase; margin-bottom: 0.8rem; }
+.artist-bio { font-family: var(--font-mono); font-weight: 300; font-size: 11px; color: #888; line-height: 1.75; text-transform: none; }
+.artist-royalty {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 1rem; background: rgba(128,0,0,0.15);
+  border: 1px solid rgba(128,0,0,0.3); padding: 5px 10px;
+  font-size: 9px; letter-spacing: 0.15em; color: var(--sand); text-transform: uppercase;
+}
+.artist-royalty span { color: var(--maroon); font-family: var(--font-display); font-size: 13px; }
+
+/* Artist model explanation */
+.model-strip {
+  background: var(--maroon);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 0;
+}
+.model-cell {
+  background: var(--maroon); padding: 2.5rem 2rem;
+  transition: background 0.2s;
+}
+.model-cell:hover { background: var(--maroon2); }
+.model-step { font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; text-transform: uppercase; }
+.model-title { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.model-desc { font-family: var(--font-mono); font-weight: 300; font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.7; text-transform: none; }
+
+/* ── AUTH MODAL ── */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  z-index: 8000; opacity: 0; pointer-events: none;
+  transition: opacity 0.35s; backdrop-filter: blur(6px);
+}
+.modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+.auth-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -48%);
+  width: min(460px, 94vw);
+  background: var(--surface); border: 1px solid var(--border);
+  z-index: 8100; opacity: 0; pointer-events: none;
+  transition: opacity 0.35s, transform 0.35s;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+.auth-modal.open { opacity: 1; pointer-events: all; transform: translate(-50%, -50%); }
+
+.auth-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.8rem 2rem 0;
+}
+.auth-modal-head h3 {
+  font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.03em;
+}
+.auth-close {
+  cursor: pointer; color: var(--muted); font-size: 16px;
+  transition: color 0.2s; background: none; border: none;
+}
+.auth-close:hover { color: var(--white); }
+
+.auth-tabs {
+  display: flex; border-bottom: 1px solid var(--border);
+  margin: 1.2rem 2rem 0;
+}
+.auth-tab {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 10px 0; margin-right: 2rem; cursor: pointer; color: var(--muted);
+  border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+  font-family: var(--font-mono); background: none; border-left: none; border-right: none; border-top: none;
+}
+.auth-tab.active { color: var(--white); border-bottom-color: var(--maroon); }
+
+.auth-body { padding: 1.8rem 2rem 2rem; }
+.auth-panel { display: none; }
+.auth-panel.active { display: block; }
+
+.auth-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.auth-field label { font-size: 9px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; font-family: var(--font-mono); }
+.auth-field input {
+  background: var(--black); color: var(--white);
+  border: 1px solid var(--border); padding: 11px 14px;
+  font-family: var(--font-mono); font-size: 12px;
+  outline: none; transition: border-color 0.2s; width: 100%;
+}
+.auth-field input:focus { border-color: var(--maroon); }
+.auth-field input::placeholder { color: #444; }
+
+.btn-auth {
+  width: 100%; background: var(--maroon); color: var(--white);
+  border: none; padding: 14px; cursor: pointer;
+  font-family: var(--font-display); font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; transition: background 0.2s; margin-top: 6px;
+}
+.btn-auth:hover { background: var(--maroon2); }
+.auth-error { color: #ff6b6b; font-size: 10px; margin-top: 8px; display: none; font-family: var(--font-mono); }
+.auth-hint { font-size: 10px; color: var(--muted); margin-top: 12px; text-transform: none; font-family: var(--font-mono); text-align: center; }
+.auth-hint span { color: var(--sand); cursor: pointer; }
+.auth-hint span:hover { color: var(--white); }
+
+/* ── ADMIN DASHBOARD ── */
+.admin-panel {
+  position: fixed; inset: 0; background: var(--black);
+  z-index: 7000; overflow-y: auto;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.admin-panel.open { opacity: 1; pointer-events: all; }
+
+.admin-topbar {
+  background: var(--off); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px; position: sticky; top: 0; z-index: 10;
+}
+.admin-topbar-left { display: flex; align-items: center; gap: 1.5rem; }
+.admin-logo { font-family: var(--font-display); font-size: 1.1rem; }
+.admin-logo span { color: var(--maroon); }
+.admin-badge {
+  background: rgba(128,0,0,0.25); border: 1px solid rgba(128,0,0,0.4);
+  color: var(--sand); font-size: 9px; letter-spacing: 0.2em;
+  padding: 3px 8px; text-transform: uppercase; font-family: var(--font-mono);
+}
+.admin-topbar-right { display: flex; align-items: center; gap: 1rem; }
+.admin-user { font-size: 10px; color: var(--muted); font-family: var(--font-mono); }
+.btn-admin-logout {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border); padding: 6px 14px; cursor: pointer;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; transition: color 0.2s, border-color 0.2s;
+}
+.btn-admin-logout:hover { color: #ff6b6b; border-color: rgba(255,107,107,0.4); }
+
+.admin-body { padding: 2rem; }
+
+.admin-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 2.5rem; }
+.admin-stat {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 1.4rem; display: flex; flex-direction: column; gap: 4px;
+}
+.admin-stat-num { font-family: var(--font-display); font-size: 2rem; color: var(--white); line-height: 1; }
+.admin-stat-lbl { font-size: 9px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-family: var(--font-mono); }
+.admin-stat-sub { font-size: 10px; color: var(--maroon); font-family: var(--font-mono); margin-top: 2px; }
+
+.admin-section-title {
+  font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.05em;
+  margin-bottom: 1rem; color: var(--sand);
+}
+.admin-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; overflow-x: auto; }
+.admin-tab {
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 10px 18px; cursor: pointer; color: var(--muted);
+  border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap; font-family: var(--font-mono); background: none; border-left: none; border-right: none; border-top: none;
+}
+.admin-tab:hover { color: var(--white); }
+.admin-tab.active { color: var(--white); border-bottom-color: var(--maroon); }
+.admin-db-panel { display: none; }
+.admin-db-panel.active { display: block; }
+
+.db-table-wrap { overflow-x: auto; }
+.db-table {
+  width: 100%; border-collapse: collapse;
+  font-family: var(--font-mono); font-size: 11px;
+}
+.db-table th {
+  background: var(--surface); padding: 10px 14px;
+  text-align: left; font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.db-table td {
+  padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  white-space: nowrap; color: #aaa;
+}
+.db-table tr:hover td { background: var(--surface); color: var(--white); }
+.db-table .pk { color: var(--maroon); }
+.db-table .fk { color: var(--sand); font-style: italic; }
+.db-badge { display: inline-block; padding: 2px 8px; font-size: 9px; letter-spacing: 0.1em; }
+.db-badge.ok  { background: rgba(0,128,0,0.2); color: #4caf50; border: 1px solid rgba(76,175,80,0.3); }
+.db-badge.warn{ background: rgba(255,165,0,0.15); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+.db-badge.bad { background: rgba(255,0,0,0.15); color: #ff4444; border: 1px solid rgba(255,68,68,0.3); }
+
+.admin-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.admin-field { display: flex; flex-direction: column; gap: 5px; }
+.admin-field label { font-size: 9px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; font-family: var(--font-mono); }
+.admin-field input, .admin-field select {
+  background: var(--black); color: var(--white);
+  border: 1px solid var(--border); padding: 9px 12px;
+  font-family: var(--font-mono); font-size: 11px;
+  outline: none; transition: border-color 0.2s;
+}
+.admin-field input:focus, .admin-field select:focus { border-color: var(--maroon); }
+.admin-field select option { background: var(--black); }
+.btn-admin-save {
+  background: var(--maroon); color: var(--white);
+  border: none; padding: 11px 24px; cursor: pointer;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; margin-top: 1rem; transition: background 0.2s;
+}
+.btn-admin-save:hover { background: var(--maroon2); }
+.admin-success { color: #4caf50; font-size: 10px; margin-top: 8px; font-family: var(--font-mono); display: none; }
+.db-count { font-size: 10px; color: var(--muted); margin-bottom: 0.8rem; font-family: var(--font-mono); }
+
+/* ── CART SIDEBAR ── */
+.cart-sidebar {
+  position: fixed; right: -100%; top: 0; bottom: 0;
+  width: min(420px, 100vw); z-index: 9999;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(30px);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transition: right 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.cart-sidebar.open { right: 0; }
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 9998; opacity: 0; pointer-events: none;
+  transition: opacity 0.4s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+.cart-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 2rem 1.8rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.cart-head h3 { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.05em; }
+.cart-close { cursor: pointer; color: var(--muted); font-size: 16px; transition: color 0.2s; }
+.cart-close:hover { color: var(--white); }
+.cart-items { flex: 1; overflow-y: auto; padding: 0 1.8rem; }
+.cart-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.cart-item-thumb {
+  width: 60px; height: 75px; background: var(--surface); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.cart-item-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item-thumb .thumb-icon { font-size: 1.5rem; opacity: 0.2; }
+.cart-item-body { flex: 1; }
+.cart-item-name { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.04em; margin-bottom: 3px; }
+.cart-item-meta { font-size: 10px; color: var(--muted); margin-bottom: 6px; text-transform: none; }
+.cart-item-price { font-size: 12px; color: var(--sand); }
+.cart-remove { color: rgba(255,68,68,0.5); cursor: pointer; font-size: 13px; transition: color 0.2s; margin-top: 2px; }
+.cart-remove:hover { color: #ff4444; }
+.cart-empty-msg {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; height: 100%; gap: 1rem;
+  color: var(--muted); font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.cart-empty-msg i { font-size: 2.5rem; opacity: 0.15; }
+.cart-foot { padding: 1.5rem 1.8rem; border-top: 1px solid var(--border); }
+.cart-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+.cart-total-lbl { font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.cart-total-val { font-family: var(--font-display); font-size: 1.8rem; }
+.cart-actions { display: flex; flex-direction: column; gap: 8px; }
+.btn-whatsapp {
+  background: #25d366; color: #fff;
+  border: none; padding: 15px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-whatsapp:hover { background: #1db954; }
+.btn-cart-clear {
+  background: transparent; color: rgba(255,68,68,0.6);
+  border: 1px solid rgba(255,68,68,0.2); padding: 11px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+}
+.btn-cart-clear:hover { color: #ff4444; border-color: rgba(255,68,68,0.5); }
+
+/* ── PAYMENT SECTION ── */
+.payment-section { background: var(--surface); }
+.payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.payment-methods { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+.pay-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--black); border: 1px solid var(--border);
+  padding: 10px 14px; font-size: 11px; letter-spacing: 0.1em;
+}
+.pay-chip .pay-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--maroon); }
+.security-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+.sec-row { display: flex; gap: 12px; align-items: flex-start; }
+.sec-icon { color: var(--maroon); margin-top: 2px; width: 16px; flex-shrink: 0; }
+.sec-content small { display: block; font-size: 9px; letter-spacing: 0.18em; color: var(--maroon); text-transform: uppercase; margin-bottom: 2px; }
+.sec-content p { font-family: var(--font-mono); font-weight: 300; font-size: 11px; color: #888; line-height: 1.6; text-transform: none; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--off); border-top: 1px solid var(--border);
+  padding: 5rem 5% 2rem;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+.footer-brand-logo { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.8rem; }
+.footer-brand-logo span { color: var(--maroon); }
+.footer-brand-desc { font-family: var(--font-mono); font-weight: 300; font-size: 11px; color: var(--muted); line-height: 1.75; max-width: 280px; text-transform: none; }
+.footer-socials { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.social-btn {
+  width: 36px; height: 36px; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--muted); cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.social-btn:hover { border-color: var(--maroon); color: var(--white); background: rgba(128,0,0,0.15); }
+.footer-col h4 { font-size: 9px; letter-spacing: 0.25em; color: var(--maroon); text-transform: uppercase; margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col a { font-family: var(--font-mono); font-weight: 300; font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.2s; text-transform: none; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: none; }
+.footer-contact { font-size: 11px; color: var(--muted); font-family: var(--font-mono); font-weight: 300; text-transform: none; }
+
+/* ── ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { height: 92vh; background: rgba(10,10,10,0.92); }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .artists-grid { grid-template-columns: 1fr; }
+  .model-strip { grid-template-columns: 1fr; }
+  .payment-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .db-form-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- PROMO BAR -->
+<div class="promo">
+  <div class="promo-inner">
+    NEW DROP: LIMITED EDITION HOODIES NOW SHIPPING &nbsp;★&nbsp; FREE DELIVERY IN NAIROBI &nbsp;★&nbsp; M-PESA ACCEPTED &nbsp;★&nbsp; EVERY PURCHASE PAYS A KENYAN ARTIST &nbsp;★&nbsp; SIZES XS–4XL &nbsp;★&nbsp; 30-DAY RETURNS &nbsp;★&nbsp; NEW DROP: LIMITED EDITION HOODIES NOW SHIPPING &nbsp;★&nbsp; FREE DELIVERY IN NAIROBI &nbsp;★&nbsp; M-PESA ACCEPTED &nbsp;★&nbsp; EVERY PURCHASE PAYS A KENYAN ARTIST &nbsp;★&nbsp; SIZES XS–4XL &nbsp;★&nbsp; 30-DAY RETURNS
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="scrollTo(0,0)">MOTION<span>TEES</span></div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#payment">Payments</a></li>
+    </ul>
+    <div class="nav-right">
+      <div id="nav-account-btn" style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);transition:color 0.2s" onclick="openAuth()" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">
+        <i class="fa fa-user-circle" style="font-size:16px"></i>
+        <span id="nav-account-label">Login</span>
+      </div>
+      <div style="width:1px;height:18px;background:var(--border)"></div>
+      <div class="cart-trigger" onclick="openCart()">
+        <i class="fa fa-shopping-bag"></i>
+        <span>Bag</span>
+        <div class="cart-bubble" id="cartCount">0</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nairobi, Kenya — Est. 2026</div>
+    <h1 class="hero-h1">
+      THROUGH<br>THE LENS<br><em>of Motion.</em>
+    </h1>
+    <p class="hero-sub">Premium streetwear born in Nairobi. Every tee is designed by a Kenyan artist who earns a royalty on every single sale.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="scrollToId('shop')">Shop Collection</button>
+      <button class="btn-ghost" onclick="scrollToId('artists')">Meet the Artists</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="IMG_20251126_181152_254.jpg" alt="Motion Tees" class="hero-img" onerror="this.style.display='none'; this.parentElement.style.background='#181818'"/>
+    <div class="hero-tag">SS 2026 DROP</div>
+    <div class="hero-overlay-text">MT</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-strip">
+  <div class="ticker-track">
+    <span class="ticker-item"><span>★</span> Artist-Designed</span>
+    <span class="ticker-item"><span>★</span> Premium Cotton</span>
+    <span class="ticker-item"><span>★</span> M-Pesa Checkout</span>
+    <span class="ticker-item"><span>★</span> Same-Day Nairobi</span>
+    <span class="ticker-item"><span>★</span> 15% Royalty to Artists</span>
+    <span class="ticker-item"><span>★</span> Limited Drops</span>
+    <span class="ticker-item"><span>★</span> Artist-Designed</span>
+    <span class="ticker-item"><span>★</span> Premium Cotton</span>
+    <span class="ticker-item"><span>★</span> M-Pesa Checkout</span>
+    <span class="ticker-item"><span>★</span> Same-Day Nairobi</span>
+    <span class="ticker-item"><span>★</span> 15% Royalty to Artists</span>
+    <span class="ticker-item"><span>★</span> Limited Drops</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section-wrap" id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <div class="section-kicker">Our Story</div>
+      <h2 class="section-h2">WE ARE<br>THE ENERGY</h2>
+      <div class="about-body">
+        <p>Motion Tees wasn't born in a boardroom — it was born in the streets. We believe style is a living, breathing thing: constantly shifting, constantly moving. Our pieces are designed for those who refuse to stay static.</p>
+        <p>Whether it's the weight of our premium cotton or the story behind every print, everything we create is a tribute to the hustle, the flow, and the movement of Kenyan culture.</p>
+        <p>We commission every design from a local Kenyan artist, paying a 15% royalty on every unit sold. When you buy from us, you're buying from them.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-cell"><div class="stat-num">47+</div><div class="stat-lbl">Artists Supported</div></div>
+        <div class="stat-cell"><div class="stat-num">12K+</div><div class="stat-lbl">Happy Customers</div></div>
+        <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-lbl">African Designs</div></div>
+        <div class="stat-cell"><div class="stat-num">15%</div><div class="stat-lbl">Artist Royalty</div></div>
+      </div>
+    </div>
+    <div class="about-visual fade-up">
+      <div class="about-img-wrap">
+        <img src="IMG_20251126_181155_273.jpg" alt="About Motion Tees" onerror="this.style.background='#181818'; this.style.display='block'; this.style.minHeight='400px'"/>
+      </div>
+      <div class="about-quote">"Fashion is how you present yourself to the world — make it African."</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section section-wrap" id="shop">
+  <div class="products-header fade-up">
+    <div>
+      <div class="section-kicker">Current Drops</div>
+      <h2 class="section-h2">THE COLLECTION</h2>
+    </div>
+    <span style="font-size:10px;color:var(--muted);letter-spacing:0.15em">CLICK TO ADD TO BAG</span>
+  </div>
+
+  <div class="products-grid fade-up">
+
+    <div class="product-card" onclick="addToCart('Classic Motion T-Shirt', 1200, 'IMG_20251126_181152_254.jpg', 'Kwame Osei')">
+      <div class="p-img-wrap">
+        <img src="IMG_20251126_181152_254.jpg" alt="" class="p-img" onerror="this.style.display='none'"/>
+        <div class="p-img-placeholder" id="ph1"><svg viewBox="0 0 100 100" fill="currentColor" color="white"><path d="M35 15 L15 35 L25 43 L25 85 L75 85 L75 43 L85 35 L65 15 C60 22 52 27 50 27 C48 27 40 22 35 15Z"/></svg></div>
+      </div>
+      <div class="p-info">
+        <div class="p-artist">by Kwame Osei</div>
+        <div class="p-name">CLASSIC MOTION T-SHIRT</div>
+        <div class="p-price">KSH 1,200</div>
+      </div>
+      <div class="p-add">+ Add to Bag</div>
+    </div>
+
+    <div class="product-card" onclick="addToCart('Premium Motion Hoodie', 2800, 'IMG-20260220-WA0001.jpg', 'Amina Wanjiku')">
+      <div class="p-img-wrap">
+        <img src="IMG-20260220-WA0001.jpg" alt="" class="p-img" onerror="this.style.display='none'"/>
+        <div class="p-badge">Limited</div>
+        <div class="p-img-placeholder"><svg viewBox="0 0 100 100" fill="currentColor" color="white"><path d="M35 15 L15 35 L25 43 L25 85 L75 85 L75 43 L85 35 L65 15 C60 22 52 27 50 27 C48 27 40 22 35 15Z"/></svg></div>
+      </div>
+      <div class="p-info">
+        <div class="p-artist">by Amina Wanjiku</div>
+        <div class="p-name">PREMIUM MOTION HOODIE</div>
+        <div class="p-price">KSH 2,800</div>
+      </div>
+      <div class="p-add">+ Add to Bag</div>
+    </div>
+
+    <div class="product-card" onclick="addToCart('Motion Crop Tee', 1200, 'IMG_20251126_181155_273.jpg', 'Nzinga Oduya')">
+      <div class="p-img-wrap">
+        <img src="IMG_20251126_181155_273.jpg" alt="" class="p-img" onerror="this.style.display='none'"/>
+        <div class="p-img-placeholder"><svg viewBox="0 0 100 100" fill="currentColor" color="white"><path d="M35 15 L15 35 L25 43 L25 85 L75 85 L75 43 L85 35 L65 15 C60 22 52 27 50 27 C48 27 40 22 35 15Z"/></svg></div>
+      </div>
+      <div class="p-info">
+        <div class="p-artist">by Nzinga Oduya</div>
+        <div class="p-name">MOTION CROP TEE</div>
+        <div class="p-price">KSH 1,200</div>
+      </div>
+      <div class="p-add">+ Add to Bag</div>
+    </div>
+
+    <div class="product-card" onclick="addToCart('Motion Safety Reflector', 500, 'IMG-20260401-WA0001.jpg', 'Jabari Mwangi')">
+      <div class="p-img-wrap">
+        <img src="IMG-20260401-WA0001.jpg" alt="" class="p-img" onerror="this.style.display='none'"/>
+        <div class="p-badge">New</div>
+        <div class="p-img-placeholder"><svg viewBox="0 0 100 100" fill="currentColor" color="white"><circle cx="50" cy="50" r="30"/></svg></div>
+      </div>
+      <div class="p-info">
+        <div class="p-artist">by Jabari Mwangi</div>
+        <div class="p-name">SAFETY REFLECTOR</div>
+        <div class="p-price">KSH 500</div>
+      </div>
+      <div class="p-add">+ Add to Bag</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ARTISTS SUPPORT -->
+<section class="artists-section section-wrap" id="artists">
+  <div class="section-kicker fade-up">Artist Programme</div>
+  <h2 class="section-h2 fade-up">WE INVEST IN<br>OUR CREATORS</h2>
+  <div class="artists-intro fade-up">
+    <p>Every design on a Motion Tees garment is commissioned from a Kenyan artist. They're not freelancers-for-hire — they're equity partners in every drop. For each unit sold, 15% of the sale price goes directly to the artist who created the design. No one-off payments. No buyouts. Just fair, ongoing earnings from their work.</p>
+  </div>
+
+  <div class="artists-grid fade-up">
+
+    <div class="artist-card">
+      <div class="artist-avatar">KO</div>
+      <div class="artist-name">KWAME OSEI</div>
+      <div class="artist-location">Westlands, Nairobi</div>
+      <div class="artist-bio">Specialises in urban street art and bold typographic designs. Known for his "Nairobi Hustle" series that celebrates city life and grind culture. Has collaborated with 3 NGOs and 2 fashion houses before joining Motion Tees.</div>
+      <div class="artist-royalty"><span>15%</span> royalty per sale · 4 active designs</div>
+    </div>
+
+    <div class="artist-card">
+      <div class="artist-avatar">AW</div>
+      <div class="artist-name">AMINA WANJIKU</div>
+      <div class="artist-location">Kilimani, Nairobi</div>
+      <div class="artist-bio">A textile artist and illustrator whose work draws from Kenya's coastal heritage and natural landscapes. Her "Safari Spirit" collection blends earthy tones with geometric Maasai patterns to create something entirely new.</div>
+      <div class="artist-royalty"><span>15%</span> royalty per sale · 2 active designs</div>
+    </div>
+
+    <div class="artist-card">
+      <div class="artist-avatar">NO</div>
+      <div class="artist-name">NZINGA ODUYA</div>
+      <div class="artist-location">Kisumu</div>
+      <div class="artist-bio">Pan-African heritage illustrator based in Kisumu. Her work explores the connection between modern African youth identity and ancestral traditions. The "Mama Africa" series is her most commercially successful work to date.</div>
+      <div class="artist-royalty"><span>15%</span> royalty per sale · 3 active designs</div>
+    </div>
+
+  </div>
+
+  <div class="model-strip fade-up">
+    <div class="model-cell">
+      <div class="model-step">Step 01</div>
+      <div class="model-title">ARTIST COMMISSIONS DESIGN</div>
+      <div class="model-desc">We brief artists on each seasonal drop theme. They create the original artwork — full creative control, no corporate interference.</div>
+    </div>
+    <div class="model-cell">
+      <div class="model-step">Step 02</div>
+      <div class="model-title">WE PRODUCE & SELL</div>
+      <div class="model-desc">Motion Tees handles production, quality control, e-commerce, and delivery. Artists focus on what they do best — creating.</div>
+    </div>
+    <div class="model-cell">
+      <div class="model-step">Step 03</div>
+      <div class="model-title">15% PAID EVERY MONTH</div>
+      <div class="model-desc">Every month, artists receive a transparent royalty statement and payment via M-Pesa for 15% of all units sold bearing their design.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT & SECURITY -->
+<section class="payment-section section-wrap" id="payment">
+  <div class="payment-grid">
+    <div class="fade-up">
+      <div class="section-kicker">Payment</div>
+      <h2 class="section-h2">SHOP WITH<br>CONFIDENCE</h2>
+      <div class="payment-methods">
+        <div class="pay-chip"><div class="pay-dot" style="background:#00a651"></div> M-Pesa</div>
+        <div class="pay-chip"><div class="pay-dot" style="background:#1a1f71"></div> Visa Card</div>
+        <div class="pay-chip"><div class="pay-dot" style="background:#eb001b"></div> Mastercard</div>
+        <div class="pay-chip"><div class="pay-dot" style="background:#e8121c"></div> Airtel Money</div>
+        <div class="pay-chip"><div class="pay-dot" style="background:#009fe3"></div> Pesapal</div>
+        <div class="pay-chip"><div class="pay-dot" style="background:#0070ba"></div> PayPal</div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="section-kicker">Security</div>
+      <h2 class="section-h2">YOUR DATA<br>IS SAFE</h2>
+      <div class="security-list">
+        <div class="sec-row"><i class="fa fa-lock sec-icon"></i><div class="sec-content"><small>SSL Encryption</small><p>256-bit SSL encryption on all transactions — same standard used by banks.</p></div></div>
+        <div class="sec-row"><i class="fa fa-shield sec-icon"></i><div class="sec-content"><small>PCI-DSS Compliant</small><p>Card data handled exclusively by certified payment partners. We never store your card.</p></div></div>
+        <div class="sec-row"><i class="fa fa-mobile sec-icon"></i><div class="sec-content"><small>2-Factor Auth</small><p>Accounts protected with optional SMS OTP two-factor authentication.</p></div></div>
+        <div class="sec-row"><i class="fa fa-eye-slash sec-icon"></i><div class="sec-content"><small>Kenya Data Protection Act</small><p>Compliant with Kenya DPA (2019). Your data is never sold. Delete anytime.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">MOTION<span>TEES</span></div>
+      <div class="footer-brand-desc">Born in Nairobi. Worn by Africa. Every tee tells a story — of resilience, identity, and style in motion.</div>
+      <div class="footer-socials">
+        <div class="social-btn"><i class="fab fa-instagram"></i></div>
+        <div class="social-btn"><i class="fab fa-tiktok"></i></div>
+        <div class="social-btn"><i class="fab fa-facebook"></i></div>
+        <div class="social-btn"><i class="fab fa-whatsapp"></i></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#shop">New Arrivals</a></li>
+        <li><a href="#shop">Bestsellers</a></li>
+        <li><a href="#shop">Limited Drops</a></li>
+        <li><a href="#shop">Corporate Orders</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#payment">Security</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Motion Tees Kenya Ltd. All rights reserved.</p>
+    <div class="footer-contact">0798477039 · @motion._tees</div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h3>YOUR BAG</h3>
+    <i class="fa fa-times cart-close" onclick="closeCart()"></i>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty-msg" id="cartEmpty">
+      <i class="fa fa-shopping-bag"></i>
+      <span>Your bag is empty</span>
+    </div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Total</span>
+      <span class="cart-total-val" id="cartTotal">KSH 0</span>
+    </div>
+    <div class="cart-actions">
+      <button class="btn-whatsapp" onclick="whatsappCheckout()">
+        <i class="fab fa-whatsapp"></i> Order via WhatsApp
+      </button>
+      <button class="btn-cart-clear" onclick="clearCart()">Clear All</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CART ─────────────────────────────────────────────────────────────────
+let cart = [];
+
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+}
+
+function addToCart(name, price, img, artist) {
+  cart.push({ id: Date.now(), name, price, img, artist });
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  renderCart();
+}
+
+function clearCart() {
+  if (!cart.length) return;
+  if (confirm('Empty your bag?')) { cart = []; renderCart(); }
+}
+
+function renderCart() {
+  document.getElementById('cartCount').textContent = cart.length;
+  const container = document.getElementById('cartItems');
+  const empty = document.getElementById('cartEmpty');
+  const total = cart.reduce((s, i) => s + i.price, 0);
+
+  document.getElementById('cartTotal').textContent = 'KSH ' + total.toLocaleString();
+
+  if (!cart.length) {
+    empty.style.display = 'flex';
+    const rows = container.querySelectorAll('.cart-item');
+    rows.forEach(r => r.remove());
+    return;
+  }
+  empty.style.display = 'none';
+  const rows = container.querySelectorAll('.cart-item');
+  rows.forEach(r => r.remove());
+  cart.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <div class="cart-item-thumb">
+        <img src="${item.img}" alt="" onerror="this.parentElement.innerHTML='<span class=\\'thumb-icon\\'>👕</span>'"/>
+      </div>
+      <div class="cart-item-body">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta" style="text-transform:none">by ${item.artist}</div>
+        <div class="cart-item-price">KSH ${item.price.toLocaleString()}</div>
+      </div>
+      <i class="fa fa-trash cart-remove" onclick="removeFromCart(${item.id})"></i>
+    `;
+    container.insertBefore(el, empty);
+  });
+}
+
+function whatsappCheckout() {
+  if (!cart.length) { alert('Your bag is empty!'); return; }
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  let msg = 'Hello Motion Tees! I want to order:%0A%0A';
+  cart.forEach((item, i) => { msg += `${i+1}. ${item.name} - KSH ${item.price.toLocaleString()}%0A`; });
+  msg += `%0A*TOTAL: KSH ${total.toLocaleString()}*%0A%0APlease confirm availability and send payment details!`;
+  window.open(`https://wa.me/254798477039?text=${msg}`, '_blank');
+}
+
+// ─── SCROLL ANIMATIONS ────────────────────────────────────────────────────
+function scrollToId(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── AUTH & ADMIN ─────────────────────────────────────────────────────────
+const users = [
+  { email: 'admin@motiontees.co.ke', password: 'admin123', name: 'Admin', role: 'admin' }
+];
+let currentUser = null;
+
+const customers = [
+  {id:'C001',first:'Brian',last:'Mutua',email:'brian.m@gmail.com',phone:'0722 100 001',city:'Nairobi CBD',county:'Nairobi',pts:850,status:'active'},
+  {id:'C002',first:'Aisha',last:'Kamau',email:'aisha.k@yahoo.com',phone:'0733 200 002',city:'Kilimani',county:'Nairobi',pts:1240,status:'active'},
+  {id:'C003',first:'Derrick',last:'Otieno',email:'derrick.o@outlook.com',phone:'0711 300 003',city:'Lavington',county:'Nairobi',pts:350,status:'active'},
+  {id:'C004',first:'Grace',last:'Wanjiku',email:'grace.w@gmail.com',phone:'0700 400 004',city:'Ruaka',county:'Kiambu',pts:640,status:'active'},
+  {id:'C005',first:'Hassan',last:'Ali',email:'hassan.a@gmail.com',phone:'0741 500 005',city:'Nyali',county:'Mombasa',pts:120,status:'active'},
+  {id:'C006',first:'Mercy',last:'Njeri',email:'mercy.n@gmail.com',phone:'0722 600 006',city:'Westlands',county:'Nairobi',pts:920,status:'active'},
+  {id:'C007',first:'Kevin',last:'Ochieng',email:'kevin.o@yahoo.com',phone:'0733 700 007',city:'Kisumu CBD',county:'Kisumu',pts:75,status:'inactive'},
+  {id:'C008',first:'Fatuma',last:'Hassan',email:'fatuma.h@gmail.com',phone:'0741 800 008',city:'Old Town',county:'Mombasa',pts:430,status:'active'},
+  {id:'C009',first:'James',last:'Kariuki',email:'james.k@outlook.com',phone:'0700 900 009',city:'Thika',county:'Kiambu',pts:200,status:'active'},
+  {id:'C010',first:'Lydia',last:'Auma',email:'lydia.a@gmail.com',phone:'0711 010 010',city:'Nakuru Town',county:'Nakuru',pts:560,status:'active'},
+];
+let orders = [
+  {id:'ORD-0001',custId:'C001',date:'15/03/2026',total:2900,payment:'M-Pesa',payStatus:'paid',delivery:'Same-Day Boda',delStatus:'delivered'},
+  {id:'ORD-0002',custId:'C002',date:'16/03/2026',total:5600,payment:'Visa Card',payStatus:'paid',delivery:'Next-Day Courier',delStatus:'delivered'},
+  {id:'ORD-0003',custId:'C003',date:'17/03/2026',total:1400,payment:'M-Pesa',payStatus:'paid',delivery:'Same-Day Boda',delStatus:'delivered'},
+  {id:'ORD-0004',custId:'C004',date:'18/03/2026',total:3600,payment:'Airtel Money',payStatus:'paid',delivery:'Next-Day Courier',delStatus:'delivered'},
+  {id:'ORD-0005',custId:'C005',date:'19/03/2026',total:2350,payment:'M-Pesa',payStatus:'paid',delivery:'3–5 Day',delStatus:'in-transit'},
+  {id:'ORD-0006',custId:'C006',date:'20/03/2026',total:6200,payment:'Pesapal',payStatus:'paid',delivery:'Same-Day Boda',delStatus:'delivered'},
+  {id:'ORD-0007',custId:'C001',date:'21/03/2026',total:1200,payment:'M-Pesa',payStatus:'paid',delivery:'Same-Day Boda',delStatus:'processing'},
+  {id:'ORD-0008',custId:'C007',date:'22/03/2026',total:2400,payment:'Visa Card',payStatus:'pending',delivery:'3–5 Day',delStatus:'pending'},
+];
+
+function badge(s) {
+  const ok = ['active','paid','delivered'];
+  const bad = ['out','pending','inactive'];
+  return `<span class="db-badge ${ok.includes(s)?'ok':bad.includes(s)?'bad':'warn'}">${s}</span>`;
+}
+
+function renderAdminCustomers() {
+  document.getElementById('a-cust-count').textContent = customers.length + ' records';
+  document.getElementById('a-customers-tbody').innerHTML = customers.map(c =>
+    `<tr><td class="pk">${c.id}</td><td>${c.first}</td><td>${c.last}</td>
+     <td>${c.email}</td><td>${c.phone}</td><td>${c.city}</td>
+     <td>${c.county}</td><td>${c.pts.toLocaleString()}</td><td>${badge(c.status)}</td></tr>`
+  ).join('');
+  document.getElementById('stat-customers').textContent = customers.length;
+}
+function renderAdminOrders() {
+  document.getElementById('a-orders-count').textContent = orders.length + ' records';
+  document.getElementById('a-orders-tbody').innerHTML = orders.map(o =>
+    `<tr><td class="pk">${o.id}</td><td class="fk">${o.custId}</td>
+     <td>${o.date}</td><td>${o.total.toLocaleString()}</td>
+     <td>${o.payment}</td><td>${badge(o.payStatus)}</td>
+     <td>${o.delivery}</td><td>${badge(o.delStatus)}</td></tr>`
+  ).join('');
+  document.getElementById('stat-orders').textContent = orders.length;
+}
+
+function openAuth() {
+  if (currentUser) {
+    if (currentUser.role === 'admin') { openAdmin(); return; }
+    if (confirm(`Logged in as ${currentUser.name}\n\nLog out?`)) logoutUser();
+    return;
+  }
+  document.getElementById('authBackdrop').classList.add('open');
+  document.getElementById('authModal').classList.add('open');
+}
+function closeAuth() {
+  document.getElementById('authBackdrop').classList.remove('open');
+  document.getElementById('authModal').classList.remove('open');
+  document.getElementById('loginError').style.display = 'none';
+  document.getElementById('signupError').style.display = 'none';
+}
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+  const cap = tab.charAt(0).toUpperCase() + tab.slice(1);
+  document.getElementById('tab' + cap).classList.add('active');
+  document.getElementById('panel' + cap).classList.add('active');
+  document.getElementById('authModalTitle').textContent = tab === 'login' ? 'Welcome Back' : 'Create Account';
+}
+function fillAdminCreds() {
+  document.getElementById('loginEmail').value = 'admin@motiontees.co.ke';
+  document.getElementById('loginPassword').value = 'admin123';
+}
+function handleLogin() {
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass  = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  const user  = users.find(u => u.email === email && u.password === pass);
+  if (!user) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  currentUser = user;
+  closeAuth();
+  updateNavForUser();
+  if (user.role === 'admin') openAdmin();
+}
+function handleSignup() {
+  const first = document.getElementById('signupFirst').value.trim();
+  const last  = document.getElementById('signupLast').value.trim();
+  const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+  const phone = document.getElementById('signupPhone').value.trim();
+  const pass  = document.getElementById('signupPassword').value;
+  const errEl = document.getElementById('signupError');
+  if (!first || !last || !email || !pass || pass.length < 6) {
+    errEl.textContent = pass.length < 6 ? 'Password must be at least 6 characters.' : 'Please fill in all fields.';
+    errEl.style.display = 'block'; return;
+  }
+  if (users.find(u => u.email === email)) {
+    errEl.textContent = 'An account with this email already exists.';
+    errEl.style.display = 'block'; return;
+  }
+  errEl.style.display = 'none';
+  users.push({ email, password: pass, name: `${first} ${last}`, role: 'customer', phone });
+  customers.push({ id:'C'+String(customers.length+1).padStart(3,'0'), first, last, email, phone:phone||'—', city:'—', county:'—', pts:0, status:'active' });
+  currentUser = users[users.length - 1];
+  closeAuth();
+  updateNavForUser();
+}
+function logoutUser() {
+  currentUser = null;
+  updateNavForUser();
+}
+function updateNavForUser() {
+  const label = document.getElementById('nav-account-label');
+  const btn   = document.getElementById('nav-account-btn');
+  if (currentUser) {
+    label.textContent = currentUser.role === 'admin' ? 'Admin ▸' : currentUser.name.split(' ')[0];
+    btn.style.color = 'var(--sand)';
+  } else {
+    label.textContent = 'Login';
+    btn.style.color = 'var(--muted)';
+  }
+}
+function openAdmin() {
+  renderAdminCustomers();
+  renderAdminOrders();
+  document.getElementById('af-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('adminUserLabel').textContent = currentUser.email;
+  document.getElementById('adminPanel').classList.add('open');
+}
+function adminLogout() {
+  document.getElementById('adminPanel').classList.remove('open');
+  logoutUser();
+}
+function adminTab(el, id) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-db-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+function adminUpdatePrice() {
+  const price = parseInt(document.getElementById('af-product').value) || 0;
+  const qty   = parseInt(document.getElementById('af-qty').value) || 1;
+  document.getElementById('af-total').value = price ? 'KSh ' + (price*qty).toLocaleString() : '—';
+}
+function adminSaveOrder() {
+  const customer = document.getElementById('af-customer').value;
+  const product  = document.getElementById('af-product').value;
+  const qty      = parseInt(document.getElementById('af-qty').value) || 1;
+  const payment  = document.getElementById('af-payment').value;
+  const delivery = document.getElementById('af-delivery').value;
+  const date     = document.getElementById('af-date').value;
+  const msgEl    = document.getElementById('admin-success-msg');
+  if (!customer || !product) { alert('Select a customer and product.'); return; }
+  orders.push({
+    id: 'ORD-' + String(orders.length+1).padStart(4,'0'),
+    custId: customer.split(' — ')[0],
+    date: new Date(date).toLocaleDateString('en-GB'),
+    total: parseInt(product)*qty,
+    payment, payStatus:'pending', delivery, delStatus:'processing'
+  });
+  renderAdminOrders();
+  msgEl.style.display = 'block';
+  setTimeout(() => msgEl.style.display = 'none', 3000);
+  document.getElementById('af-customer').value = '';
+  document.getElementById('af-product').value  = '';
+  document.getElementById('af-qty').value      = 1;
+  document.getElementById('af-total').value    = '—';
+}
+</script>
+<!-- AUTH MODAL BACKDROP -->
+<div class="modal-backdrop" id="authBackdrop" onclick="closeAuth()"></div>
+
+<!-- AUTH MODAL -->
+<div class="auth-modal" id="authModal">
+  <div class="auth-modal-head">
+    <h3 id="authModalTitle">Welcome Back</h3>
+    <button class="auth-close" onclick="closeAuth()"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+    <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+  </div>
+  <div class="auth-body">
+
+    <!-- LOGIN PANEL -->
+    <div class="auth-panel active" id="panelLogin">
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com"/>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••"/>
+      </div>
+      <div class="auth-error" id="loginError">Incorrect email or password.</div>
+      <button class="btn-auth" onclick="handleLogin()">Login to Account</button>
+      <div class="auth-hint">
+        Admin access: use <span onclick="fillAdminCreds()">admin@motiontees.co.ke</span>
+      </div>
+      <div class="auth-hint" style="margin-top:6px">
+        No account? <span onclick="switchAuthTab('signup')">Sign up here</span>
+      </div>
+    </div>
+
+    <!-- SIGNUP PANEL -->
+    <div class="auth-panel" id="panelSignup">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="auth-field">
+          <label>First Name</label>
+          <input type="text" id="signupFirst" placeholder="Brian"/>
+        </div>
+        <div class="auth-field">
+          <label>Last Name</label>
+          <input type="text" id="signupLast" placeholder="Mutua"/>
+        </div>
+      </div>
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" id="signupEmail" placeholder="you@example.com"/>
+      </div>
+      <div class="auth-field">
+        <label>Phone Number</label>
+        <input type="tel" id="signupPhone" placeholder="07XX XXX XXX"/>
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Min 6 characters"/>
+      </div>
+      <div class="auth-error" id="signupError">Please fill in all fields.</div>
+      <button class="btn-auth" onclick="handleSignup()">Create Account</button>
+      <div class="auth-hint" style="margin-top:10px">
+        Already have an account? <span onclick="switchAuthTab('login')">Login here</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-topbar">
+    <div class="admin-topbar-left">
+      <div class="admin-logo">MOTION<span>TEES</span></div>
+      <div class="admin-badge">Admin Dashboard</div>
+    </div>
+    <div class="admin-topbar-right">
+      <div class="admin-user" id="adminUserLabel"></div>
+      <button class="btn-admin-logout" onclick="adminLogout()"><i class="fa fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+  <div class="admin-body">
+
+    <!-- Stats row -->
+    <div class="admin-stats">
+      <div class="admin-stat">
+        <div class="admin-stat-num" id="stat-customers">10</div>
+        <div class="admin-stat-lbl">Customers</div>
+        <div class="admin-stat-sub">Registered accounts</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-num" id="stat-orders">8</div>
+        <div class="admin-stat-lbl">Orders</div>
+        <div class="admin-stat-sub">Total placed</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-num">KSh 23.4K</div>
+        <div class="admin-stat-lbl">Revenue</div>
+        <div class="admin-stat-sub">This month</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-num">5</div>
+        <div class="admin-stat-lbl">Artists</div>
+        <div class="admin-stat-sub">Active & earning</div>
+      </div>
+    </div>
+
+    <!-- DB Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="adminTab(this,'adb-customers')">Customers</button>
+      <button class="admin-tab" onclick="adminTab(this,'adb-products')">Products</button>
+      <button class="admin-tab" onclick="adminTab(this,'adb-artists')">Artists</button>
+      <button class="admin-tab" onclick="adminTab(this,'adb-orders')">Orders</button>
+      <button class="admin-tab" onclick="adminTab(this,'adb-orderlines')">Order Lines</button>
+      <button class="admin-tab" onclick="adminTab(this,'adb-new-order')">+ New Order</button>
+    </div>
+
+    <!-- CUSTOMERS -->
+    <div class="admin-db-panel active" id="adb-customers">
+      <div class="db-count" id="a-cust-count">10 records</div>
+      <div class="db-table-wrap">
+        <table class="db-table">
+          <thead><tr><th>ID</th><th>First</th><th>Last</th><th>Email</th><th>Phone</th><th>City</th><th>County</th><th>Pts</th><th>Status</th></tr></thead>
+          <tbody id="a-customers-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="admin-db-panel" id="adb-products">
+      <div class="db-count">8 records</div>
+      <div class="db-table-wrap">
+        <table class="db-table">
+          <thead><tr><th>ID</th><th>Product Name</th><th>Category</th><th>Artist</th><th>Price (KSh)</th><th>Stock</th><th>Sizes</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="pk">P001</td><td>Classic Motion T-Shirt</td><td>Standard Tees</td><td class="fk">Kwame Osei</td><td>1,200</td><td>187</td><td>S–2XL</td><td><span class="db-badge ok">Active</span></td></tr>
+            <tr><td class="pk">P002</td><td>Premium Motion Hoodie</td><td>Limited Edition</td><td class="fk">Amina Wanjiku</td><td>2,800</td><td>63</td><td>S–XL</td><td><span class="db-badge warn">Low Stock</span></td></tr>
+            <tr><td class="pk">P003</td><td>Motion Crop Tee</td><td>Standard Tees</td><td class="fk">Nzinga Oduya</td><td>1,200</td><td>245</td><td>XS–XL</td><td><span class="db-badge ok">Active</span></td></tr>
+            <tr><td class="pk">P004</td><td>Safety Reflector</td><td>Accessories</td><td class="fk">Jabari Mwangi</td><td>500</td><td>320</td><td>One Size</td><td><span class="db-badge ok">Active</span></td></tr>
+            <tr><td class="pk">P005</td><td>Nairobi Hustle Tee</td><td>Standard Tees</td><td class="fk">Kwame Osei</td><td>1,400</td><td>48</td><td>S–2XL</td><td><span class="db-badge warn">Low Stock</span></td></tr>
+            <tr><td class="pk">P006</td><td>Safari Spirit Tee</td><td>Standard Tees</td><td class="fk">Amina Wanjiku</td><td>1,350</td><td>155</td><td>S–XL</td><td><span class="db-badge ok">Active</span></td></tr>
+            <tr><td class="pk">P007</td><td>Mama Africa Classic</td><td>Standard Tees</td><td class="fk">Nzinga Oduya</td><td>1,300</td><td>0</td><td>S–XL</td><td><span class="db-badge bad">Out of Stock</span></td></tr>
+            <tr><td class="pk">P008</td><td>Motion Corporate Polo</td><td>Corporate</td><td class="fk">Kwame Osei</td><td>2,500</td><td>120</td><td>XS–3XL</td><td><span class="db-badge ok">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ARTISTS -->
+    <div class="admin-db-panel" id="adb-artists">
+      <div class="db-count">5 records</div>
+      <div class="db-table-wrap">
+        <table class="db-table">
+          <thead><tr><th>ID</th><th>Name</th><th>Location</th><th>Specialty</th><th>Royalty</th><th>Earnings (KSh)</th><th>Designs</th><th>Joined</th></tr></thead>
+          <tbody>
+            <tr><td class="pk">A001</td><td>Kwame Osei</td><td>Westlands, Nairobi</td><td>Urban / Street Art</td><td>15%</td><td>48,750</td><td>4</td><td>01/01/2026</td></tr>
+            <tr><td class="pk">A002</td><td>Amina Wanjiku</td><td>Kilimani, Nairobi</td><td>Nature / Safari</td><td>15%</td><td>22,190</td><td>2</td><td>05/01/2026</td></tr>
+            <tr><td class="pk">A003</td><td>Nzinga Oduya</td><td>Kisumu</td><td>Pan-African Heritage</td><td>15%</td><td>35,610</td><td>3</td><td>10/01/2026</td></tr>
+            <tr><td class="pk">A004</td><td>Jabari Mwangi</td><td>Eastlands, Nairobi</td><td>Hip-Hop / Urban</td><td>15%</td><td>19,890</td><td>1</td><td>15/01/2026</td></tr>
+            <tr><td class="pk">A005</td><td>Zara Ndlovu</td><td>Mombasa</td><td>Landscape / Nature</td><td>15%</td><td>28,350</td><td>2</td><td>20/01/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div class="admin-db-panel" id="adb-orders">
+      <div class="db-count" id="a-orders-count">8 records</div>
+      <div class="db-table-wrap">
+        <table class="db-table">
+          <thead><tr><th>OrderID</th><th>CustomerID</th><th>Date</th><th>Total (KSh)</th><th>Payment</th><th>Pay Status</th><th>Delivery</th><th>Del. Status</th></tr></thead>
+          <tbody id="a-orders-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ORDER LINES -->
+    <div class="admin-db-panel" id="adb-orderlines">
+      <div class="db-count">12 records</div>
+      <div class="db-table-wrap">
+        <table class="db-table">
+          <thead><tr><th>LineID</th><th>OrderID</th><th>ProductID</th><th>Size</th><th>Qty</th><th>Unit Price</th><th>Line Total</th><th>Artist Royalty</th></tr></thead>
+          <tbody>
+            <tr><td class="pk">L001</td><td class="fk">ORD-0001</td><td class="fk">P001</td><td>L</td><td>2</td><td>1,200</td><td>2,400</td><td>360.00</td></tr>
+            <tr><td class="pk">L002</td><td class="fk">ORD-0001</td><td class="fk">P004</td><td>—</td><td>1</td><td>500</td><td>500</td><td>75.00</td></tr>
+            <tr><td class="pk">L003</td><td class="fk">ORD-0002</td><td class="fk">P002</td><td>S</td><td>2</td><td>2,800</td><td>5,600</td><td>840.00</td></tr>
+            <tr><td class="pk">L004</td><td class="fk">ORD-0003</td><td class="fk">P005</td><td>XL</td><td>1</td><td>1,400</td><td>1,400</td><td>210.00</td></tr>
+            <tr><td class="pk">L005</td><td class="fk">ORD-0004</td><td class="fk">P001</td><td>M</td><td>2</td><td>1,200</td><td>2,400</td><td>360.00</td></tr>
+            <tr><td class="pk">L006</td><td class="fk">ORD-0004</td><td class="fk">P003</td><td>L</td><td>1</td><td>1,200</td><td>1,200</td><td>180.00</td></tr>
+            <tr><td class="pk">L007</td><td class="fk">ORD-0005</td><td class="fk">P006</td><td>M</td><td>1</td><td>1,350</td><td>1,350</td><td>202.50</td></tr>
+            <tr><td class="pk">L008</td><td class="fk">ORD-0005</td><td class="fk">P004</td><td>—</td><td>2</td><td>500</td><td>1,000</td><td>150.00</td></tr>
+            <tr><td class="pk">L009</td><td class="fk">ORD-0006</td><td class="fk">P008</td><td>L</td><td>2</td><td>2,500</td><td>5,000</td><td>750.00</td></tr>
+            <tr><td class="pk">L010</td><td class="fk">ORD-0006</td><td class="fk">P003</td><td>M</td><td>1</td><td>1,200</td><td>1,200</td><td>180.00</td></tr>
+            <tr><td class="pk">L011</td><td class="fk">ORD-0007</td><td class="fk">P003</td><td>S</td><td>1</td><td>1,200</td><td>1,200</td><td>180.00</td></tr>
+            <tr><td class="pk">L012</td><td class="fk">ORD-0008</td><td class="fk">P001</td><td>XL</td><td>2</td><td>1,200</td><td>2,400</td><td>360.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NEW ORDER FORM -->
+    <div class="admin-db-panel" id="adb-new-order">
+      <div class="admin-section-title">+ New Order Entry</div>
+      <div class="admin-form-grid">
+        <div class="admin-field">
+          <label>Customer</label>
+          <select id="af-customer">
+            <option value="">— Select Customer —</option>
+            <option>C001 — Brian Mutua</option><option>C002 — Aisha Kamau</option>
+            <option>C003 — Derrick Otieno</option><option>C004 — Grace Wanjiku</option>
+            <option>C005 — Hassan Ali</option><option>C006 — Mercy Njeri</option>
+            <option>C007 — Kevin Ochieng</option><option>C008 — Fatuma Hassan</option>
+            <option>C009 — James Kariuki</option><option>C010 — Lydia Auma</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label>Order Date</label>
+          <input type="date" id="af-date"/>
+        </div>
+        <div class="admin-field">
+          <label>Product</label>
+          <select id="af-product" onchange="adminUpdatePrice()">
+            <option value="">— Select Product —</option>
+            <option value="1200">P001 — Classic Motion T-Shirt (KSh 1,200)</option>
+            <option value="2800">P002 — Premium Motion Hoodie (KSh 2,800)</option>
+            <option value="1200">P003 — Motion Crop Tee (KSh 1,200)</option>
+            <option value="500">P004 — Safety Reflector (KSh 500)</option>
+            <option value="1400">P005 — Nairobi Hustle Tee (KSh 1,400)</option>
+            <option value="1350">P006 — Safari Spirit Tee (KSh 1,350)</option>
+            <option value="2500">P008 — Motion Corporate Polo (KSh 2,500)</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label>Size</label>
+          <select id="af-size"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option><option>One Size</option></select>
+        </div>
+        <div class="admin-field">
+          <label>Quantity</label>
+          <input type="number" id="af-qty" value="1" min="1" max="50" oninput="adminUpdatePrice()"/>
+        </div>
+        <div class="admin-field">
+          <label>Payment Method</label>
+          <select id="af-payment"><option>M-Pesa</option><option>Visa Card</option><option>Mastercard</option><option>Airtel Money</option><option>Pesapal</option><option>PayPal</option></select>
+        </div>
+        <div class="admin-field">
+          <label>Delivery Method</label>
+          <select id="af-delivery"><option>Same-Day Boda (Nairobi)</option><option>Next-Day Courier (Kenya)</option><option>3–5 Day (East Africa)</option></select>
+        </div>
+        <div class="admin-field">
+          <label>Order Total (KSh)</label>
+          <input type="text" id="af-total" value="—" readonly style="color:var(--sand);font-weight:bold"/>
+        </div>
+      </div>
+      <button class="btn-admin-save" onclick="adminSaveOrder()">Save Order Record</button>
+      <div class="admin-success" id="admin-success-msg">✓ Order saved to database.</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
